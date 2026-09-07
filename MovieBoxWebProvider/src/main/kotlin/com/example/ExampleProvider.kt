@@ -3,6 +3,10 @@ package com.example
 import com.lagradost.cloudstream3.*
 import org.json.JSONArray
 import org.json.JSONObject
+import com.lagradost.cloudstream3.utils.ExtractorLink
+import com.lagradost.cloudstream3.utils.ExtractorLinkType
+import com.lagradost.cloudstream3.utils.Qualities
+import com.lagradost.cloudstream3.utils.newExtractorLink
 import java.net.URLEncoder
 
 class MovieBoxWebProvider : MainAPI() {
@@ -153,7 +157,7 @@ class MovieBoxWebProvider : MainAPI() {
             title,
             url,
             TvType.Movie,
-            url
+            title
         ) {
             plot = description
             posterUrl = image
@@ -161,4 +165,35 @@ class MovieBoxWebProvider : MainAPI() {
     }
 
 }
+}
+
+    override suspend fun loadLinks(
+        data: String,
+        isCasting: Boolean,
+        subtitleCallback: (SubtitleFile) -> Unit,
+        callback: (com.lagradost.cloudstream3.utils.ExtractorLink) -> Unit
+    ): Boolean {
+        val url = data.trim()
+
+        if (
+            url.startsWith("http://") || url.startsWith("https://") &&
+            (url.contains(".mp4", true) ||
+             url.contains(".m3u8", true) ||
+             url.contains(".mpd", true))
+        ) {
+            callback(
+                newExtractorLink(
+                    source = name,
+                    name = name,
+                    url = url,
+                    type = ExtractorLinkType.VIDEO
+                ) {
+                    quality = Qualities.Unknown.value
+                }
+            )
+            return true
+        }
+
+        return false
+    }
 }
