@@ -26,3 +26,4 @@ class ExampleProvider : MainAPI() {
         )
     }
 }
+// Build trigger
