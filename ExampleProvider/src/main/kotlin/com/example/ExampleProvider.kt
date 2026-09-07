@@ -5,7 +5,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.net.URLEncoder
 
-class ExampleProvider : MainAPI() {
+class MovieBoxWebProvider : MainAPI() {
 
     override var mainUrl = "https://officialmoviebox.com"
     override var name = "MovieBox Web"
