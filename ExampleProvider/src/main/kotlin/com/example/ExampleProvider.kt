@@ -139,14 +139,9 @@ class ExampleProvider : MainAPI() {
             html.contains("\"subjectType\":2", true)
 
         return if (isSeries) {
-            newTvSeriesLoadResponse(
-                title,
-                url,
                 TvType.TvSeries,
-                url
+                emptyList()
             ) {
-                plot = description
-                posterUrl = image
             }
         } else {
             newMovieLoadResponse(
@@ -161,17 +156,4 @@ class ExampleProvider : MainAPI() {
         }
     }
 
-    override suspend fun loadLinks(
-        data: String,
-        isCasting: Boolean,
-        subtitleCallback: (SubtitleFile) -> Unit,
-        callback: (ExtractorLink) -> Unit
-    ): Boolean {
-
-        // Playback extraction is intentionally not included.
-        // We can connect this to an authorized/public playback API
-        // if you have permission to use one.
-
-        return false
-    }
 }
