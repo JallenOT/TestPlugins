@@ -162,38 +162,6 @@ class MovieBoxWebProvider : MainAPI() {
             plot = description
             posterUrl = image
         }
-    }
-
 }
 }
-
-    override suspend fun loadLinks(
-        data: String,
-        isCasting: Boolean,
-        subtitleCallback: (SubtitleFile) -> Unit,
-        callback: (com.lagradost.cloudstream3.utils.ExtractorLink) -> Unit
-    ): Boolean {
-        val url = data.trim()
-
-        if (
-            url.startsWith("http://") || url.startsWith("https://") &&
-            (url.contains(".mp4", true) ||
-             url.contains(".m3u8", true) ||
-             url.contains(".mpd", true))
-        ) {
-            callback(
-                newExtractorLink(
-                    source = name,
-                    name = name,
-                    url = url,
-                    type = ExtractorLinkType.VIDEO
-                ) {
-                    quality = Qualities.Unknown.value
-                }
-            )
-            return true
-        }
-
-        return false
-    }
 }
