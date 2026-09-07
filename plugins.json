@@ -1,0 +1,23 @@
+[
+    {
+        "iconUrl": "https://officialmoviebox.com/favicon.ico",
+        "fileHash": "sha256-3e7d0d3d93c9b824fb6d7c12df8da293f4a1dff36533ca5048e726aa31f5e293",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/JallenOT/TestPlugins",
+        "fileSize": 14414,
+        "status": 1,
+        "language": "en",
+        "authors": [
+            "JallenOT"
+        ],
+        "tvTypes": [
+            "Movie",
+            "TvSeries"
+        ],
+        "version": 1,
+        "internalName": "MovieBoxWebProvider",
+        "description": "MovieBox Web catalog provider",
+        "url": "https://raw.githubusercontent.com/JallenOT/TestPlugins/builds/MovieBoxWebProvider.cs3",
+        "name": "MovieBoxWebProvider"
+    }
+]
