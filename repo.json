@@ -1,0 +1,8 @@
+{
+  "name": "JallenOT TestPlugins",
+  "description": "My CloudStream plugins",
+  "manifestVersion": 1,
+  "pluginLists": [
+    "https://raw.githubusercontent.com/JallenOT/TestPlugins/builds/plugins.json"
+  ]
+}
