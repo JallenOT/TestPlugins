@@ -138,21 +138,25 @@ class ExampleProvider : MainAPI() {
             html.contains("subjectType", true) &&
             html.contains("\"subjectType\":2", true)
 
-        return if (isSeries) {
-                TvType.TvSeries,
-                emptyList()
-            ) {
-            }
-        } else {
-            newMovieLoadResponse(
-                title,
-                url,
-                TvType.Movie,
-                url
-            ) {
-                plot = description
-                posterUrl = image
-            }
+    return if (isSeries) {
+        newTvSeriesLoadResponse(
+            title,
+            url,
+            TvType.TvSeries,
+            emptyList()
+        ) {
+            plot = description
+            posterUrl = image
+        }
+    } else {
+        newMovieLoadResponse(
+            title,
+            url,
+            TvType.Movie,
+            url
+        ) {
+            plot = description
+            posterUrl = image
         }
     }
 
