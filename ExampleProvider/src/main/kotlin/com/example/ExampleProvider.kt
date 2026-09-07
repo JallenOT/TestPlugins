@@ -157,15 +157,20 @@ class ExampleProvider : MainAPI() {
         )
 
         val files = json.getJSONArray("files")
-
         var found = false
 
         for (i in 0 until files.length()) {
-
             val file = files.getJSONObject(i)
-            val name = file.optString("name")
 
-            if (!name.lowercase().endsWith(".mp4")) continue
+            val name = file.optString("name")
+            val format = file.optString("format")
+
+            val isVideo =
+                name.lowercase().endsWith(".mp4") ||
+                format.lowercase().contains("mpeg4") ||
+                format.lowercase().contains("mp4")
+
+            if (!isVideo || name.isBlank()) continue
 
             val encodedName = URLEncoder
                 .encode(name, "UTF-8")
