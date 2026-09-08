@@ -191,5 +191,3 @@ class MovieBoxWebProvider : MainAPI() {
     }
 
 }
-}
-}
